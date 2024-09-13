@@ -50,3 +50,10 @@ public class ViaggioController {
     }
 
 }
+
+/*
+{
+    "destinazione": "",
+    "dataViaggio": ""
+}
+ */

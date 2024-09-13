@@ -60,3 +60,12 @@ public class DipendenteController {
 
 }
 
+/*
+{
+    "username": "",
+    "nome": "",
+    "cognome": "",
+    "email": ""
+}
+ */
+
