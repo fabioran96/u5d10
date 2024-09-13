@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Viaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String destinazione;
     private LocalDate dataViaggio;
     @Enumerated(EnumType.STRING)

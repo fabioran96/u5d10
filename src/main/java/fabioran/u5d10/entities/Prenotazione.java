@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Prenotazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "dipendente_id")
