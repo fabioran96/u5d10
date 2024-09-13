@@ -1,11 +1,16 @@
 package fabioran.u5d10.services;
 
 import fabioran.u5d10.entities.Prenotazione;
+import fabioran.u5d10.entities.Viaggio;
 import fabioran.u5d10.exceptions.NotFoundException;
 import fabioran.u5d10.repositories.DipendenteRepository;
 import fabioran.u5d10.repositories.PrenotazioneRepository;
 import fabioran.u5d10.repositories.ViaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +25,13 @@ public class PrenotazioneService {
     //crea prenotazione
     public Prenotazione save(Prenotazione body) {
         return prenotazioneRepository.save(body);
+    }
+
+    //get prenotazioni
+    public Page<Prenotazione> getPrenotazioni(int page, int size, String sort) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return prenotazioneRepository.findAll(pageable);
     }
 
     //trova prenotazione per id

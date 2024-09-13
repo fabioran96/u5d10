@@ -1,11 +1,19 @@
 package fabioran.u5d10.services;
 
+import com.cloudinary.utils.ObjectUtils;
 import fabioran.u5d10.entities.StatoViaggio;
 import fabioran.u5d10.entities.Viaggio;
 import fabioran.u5d10.exceptions.NotFoundException;
 import fabioran.u5d10.repositories.ViaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Service
 public class ViaggioService {
@@ -16,6 +24,13 @@ public class ViaggioService {
     public Viaggio save(Viaggio body){
         body.setStato(StatoViaggio.IN_PROGRAMMA);
         return viaggioRepository.save(body);
+    }
+
+    //get Viaggi
+    public Page<Viaggio> getViaggio(int page, int size, String sort) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
+        return viaggioRepository.findAll(pageable);
     }
 
     //findById
@@ -47,6 +62,8 @@ public class ViaggioService {
         Viaggio found = this.findById(id);
         viaggioRepository.delete(found);
     }
+
+
 
 
 

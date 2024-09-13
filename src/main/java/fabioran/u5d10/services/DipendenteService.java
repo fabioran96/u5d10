@@ -41,12 +41,12 @@ public class DipendenteService {
         return dipendenteRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
-    public void findByIdAndDelete(int id) {
+    public void delete(int id) {
         Dipendente found = this.findById(id);
         dipendenteRepository.delete(found);
     }
 
-    public Dipendente findByIdAndUpdate(int id, Dipendente body) {
+    public Dipendente update(int id, Dipendente body) {
 
         Dipendente found = this.findById(id);
         found.setUsername(body.getUsername());
